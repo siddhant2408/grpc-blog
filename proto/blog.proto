@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package blog;
+
+option go_package = "grpc-blog/proto/blogpb;blogpb";
+
+import "google/protobuf/timestamp.proto";
+
+message BlogPost {
+  string post_id = 1;
+  string title = 2;
+  string content = 3;
+  string author = 4;
+  google.protobuf.Timestamp publication_date = 5;
+  repeated string tags = 6;
+}
+
+message CreatePostRequest {
+  string title = 1;
+  string content = 2;
+  string author = 3;
+  google.protobuf.Timestamp publication_date = 4;
+  repeated string tags = 5;
+}
+
+message PostResponse {
+  BlogPost post = 1;
+  string error = 2;
+}
+
+message ReadPostRequest {
+  string post_id = 1;
+}
+
+message UpdatePostRequest {
+  string post_id = 1;
+  string title = 2;
+  string content = 3;
+  string author = 4;
+  repeated string tags = 5;
+}
+
+message DeletePostRequest {
+  string post_id = 1;
+}
+
+message DeletePostResponse {
+  bool success = 1;
+  string error = 2;
+}
+
+service BlogService {
+  rpc CreatePost(CreatePostRequest) returns (PostResponse);
+  rpc ReadPost(ReadPostRequest) returns (PostResponse);
+  rpc UpdatePost(UpdatePostRequest) returns (PostResponse);
+  rpc DeletePost(DeletePostRequest) returns (DeletePostResponse);
+}
