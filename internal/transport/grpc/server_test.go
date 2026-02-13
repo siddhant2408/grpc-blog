@@ -86,7 +86,7 @@ func TestCreatePost(t *testing.T) {
 		t.Fatal("expected post in response")
 	}
 
-	if resp.Post.PostId == "" {
+	if resp.Post[0].PostId == "" {
 		t.Fatal("expected post_id to be set")
 	}
 }

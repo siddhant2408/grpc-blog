@@ -24,12 +24,15 @@ message CreatePostRequest {
 }
 
 message PostResponse {
-  BlogPost post = 1;
+  repeated BlogPost post = 1;
   string error = 2;
 }
 
 message ReadPostRequest {
   string post_id = 1;
+}
+
+message ReadAllRequest {
 }
 
 message UpdatePostRequest {
@@ -54,4 +57,5 @@ service BlogService {
   rpc ReadPost(ReadPostRequest) returns (PostResponse);
   rpc UpdatePost(UpdatePostRequest) returns (PostResponse);
   rpc DeletePost(DeletePostRequest) returns (DeletePostResponse);
+  rpc ReadAll(ReadAllRequest) returns (PostResponse);
 }

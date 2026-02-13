@@ -184,7 +184,7 @@ func (x *CreatePostRequest) GetTags() []string {
 
 type PostResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Post          *BlogPost              `protobuf:"bytes,1,opt,name=post,proto3" json:"post,omitempty"`
+	Post          []*BlogPost            `protobuf:"bytes,1,rep,name=post,proto3" json:"post,omitempty"`
 	Error         string                 `protobuf:"bytes,2,opt,name=error,proto3" json:"error,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -220,7 +220,7 @@ func (*PostResponse) Descriptor() ([]byte, []int) {
 	return file_proto_blog_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *PostResponse) GetPost() *BlogPost {
+func (x *PostResponse) GetPost() []*BlogPost {
 	if x != nil {
 		return x.Post
 	}
@@ -278,6 +278,42 @@ func (x *ReadPostRequest) GetPostId() string {
 	return ""
 }
 
+type ReadAllRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReadAllRequest) Reset() {
+	*x = ReadAllRequest{}
+	mi := &file_proto_blog_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReadAllRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReadAllRequest) ProtoMessage() {}
+
+func (x *ReadAllRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_blog_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReadAllRequest.ProtoReflect.Descriptor instead.
+func (*ReadAllRequest) Descriptor() ([]byte, []int) {
+	return file_proto_blog_proto_rawDescGZIP(), []int{4}
+}
+
 type UpdatePostRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PostId        string                 `protobuf:"bytes,1,opt,name=post_id,json=postId,proto3" json:"post_id,omitempty"`
@@ -291,7 +327,7 @@ type UpdatePostRequest struct {
 
 func (x *UpdatePostRequest) Reset() {
 	*x = UpdatePostRequest{}
-	mi := &file_proto_blog_proto_msgTypes[4]
+	mi := &file_proto_blog_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -303,7 +339,7 @@ func (x *UpdatePostRequest) String() string {
 func (*UpdatePostRequest) ProtoMessage() {}
 
 func (x *UpdatePostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_blog_proto_msgTypes[4]
+	mi := &file_proto_blog_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -316,7 +352,7 @@ func (x *UpdatePostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdatePostRequest.ProtoReflect.Descriptor instead.
 func (*UpdatePostRequest) Descriptor() ([]byte, []int) {
-	return file_proto_blog_proto_rawDescGZIP(), []int{4}
+	return file_proto_blog_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *UpdatePostRequest) GetPostId() string {
@@ -363,7 +399,7 @@ type DeletePostRequest struct {
 
 func (x *DeletePostRequest) Reset() {
 	*x = DeletePostRequest{}
-	mi := &file_proto_blog_proto_msgTypes[5]
+	mi := &file_proto_blog_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -375,7 +411,7 @@ func (x *DeletePostRequest) String() string {
 func (*DeletePostRequest) ProtoMessage() {}
 
 func (x *DeletePostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_blog_proto_msgTypes[5]
+	mi := &file_proto_blog_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -388,7 +424,7 @@ func (x *DeletePostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePostRequest.ProtoReflect.Descriptor instead.
 func (*DeletePostRequest) Descriptor() ([]byte, []int) {
-	return file_proto_blog_proto_rawDescGZIP(), []int{5}
+	return file_proto_blog_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *DeletePostRequest) GetPostId() string {
@@ -408,7 +444,7 @@ type DeletePostResponse struct {
 
 func (x *DeletePostResponse) Reset() {
 	*x = DeletePostResponse{}
-	mi := &file_proto_blog_proto_msgTypes[6]
+	mi := &file_proto_blog_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -420,7 +456,7 @@ func (x *DeletePostResponse) String() string {
 func (*DeletePostResponse) ProtoMessage() {}
 
 func (x *DeletePostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_blog_proto_msgTypes[6]
+	mi := &file_proto_blog_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -433,7 +469,7 @@ func (x *DeletePostResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePostResponse.ProtoReflect.Descriptor instead.
 func (*DeletePostResponse) Descriptor() ([]byte, []int) {
-	return file_proto_blog_proto_rawDescGZIP(), []int{6}
+	return file_proto_blog_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *DeletePostResponse) GetSuccess() bool {
@@ -469,10 +505,11 @@ const file_proto_blog_proto_rawDesc = "" +
 	"\x10publication_date\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\x0fpublicationDate\x12\x12\n" +
 	"\x04tags\x18\x05 \x03(\tR\x04tags\"H\n" +
 	"\fPostResponse\x12\"\n" +
-	"\x04post\x18\x01 \x01(\v2\x0e.blog.BlogPostR\x04post\x12\x14\n" +
+	"\x04post\x18\x01 \x03(\v2\x0e.blog.BlogPostR\x04post\x12\x14\n" +
 	"\x05error\x18\x02 \x01(\tR\x05error\"*\n" +
 	"\x0fReadPostRequest\x12\x17\n" +
-	"\apost_id\x18\x01 \x01(\tR\x06postId\"\x88\x01\n" +
+	"\apost_id\x18\x01 \x01(\tR\x06postId\"\x10\n" +
+	"\x0eReadAllRequest\"\x88\x01\n" +
 	"\x11UpdatePostRequest\x12\x17\n" +
 	"\apost_id\x18\x01 \x01(\tR\x06postId\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x18\n" +
@@ -483,7 +520,7 @@ const file_proto_blog_proto_rawDesc = "" +
 	"\apost_id\x18\x01 \x01(\tR\x06postId\"D\n" +
 	"\x12DeletePostResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x14\n" +
-	"\x05error\x18\x02 \x01(\tR\x05error2\xfb\x01\n" +
+	"\x05error\x18\x02 \x01(\tR\x05error2\xb0\x02\n" +
 	"\vBlogService\x129\n" +
 	"\n" +
 	"CreatePost\x12\x17.blog.CreatePostRequest\x1a\x12.blog.PostResponse\x125\n" +
@@ -491,7 +528,8 @@ const file_proto_blog_proto_rawDesc = "" +
 	"\n" +
 	"UpdatePost\x12\x17.blog.UpdatePostRequest\x1a\x12.blog.PostResponse\x12?\n" +
 	"\n" +
-	"DeletePost\x12\x17.blog.DeletePostRequest\x1a\x18.blog.DeletePostResponseB\x1fZ\x1dgrpc-blog/proto/blogpb;blogpbb\x06proto3"
+	"DeletePost\x12\x17.blog.DeletePostRequest\x1a\x18.blog.DeletePostResponse\x123\n" +
+	"\aReadAll\x12\x14.blog.ReadAllRequest\x1a\x12.blog.PostResponseB\x1fZ\x1dgrpc-blog/proto/blogpb;blogpbb\x06proto3"
 
 var (
 	file_proto_blog_proto_rawDescOnce sync.Once
@@ -505,31 +543,34 @@ func file_proto_blog_proto_rawDescGZIP() []byte {
 	return file_proto_blog_proto_rawDescData
 }
 
-var file_proto_blog_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_proto_blog_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_proto_blog_proto_goTypes = []any{
 	(*BlogPost)(nil),              // 0: blog.BlogPost
 	(*CreatePostRequest)(nil),     // 1: blog.CreatePostRequest
 	(*PostResponse)(nil),          // 2: blog.PostResponse
 	(*ReadPostRequest)(nil),       // 3: blog.ReadPostRequest
-	(*UpdatePostRequest)(nil),     // 4: blog.UpdatePostRequest
-	(*DeletePostRequest)(nil),     // 5: blog.DeletePostRequest
-	(*DeletePostResponse)(nil),    // 6: blog.DeletePostResponse
-	(*timestamppb.Timestamp)(nil), // 7: google.protobuf.Timestamp
+	(*ReadAllRequest)(nil),        // 4: blog.ReadAllRequest
+	(*UpdatePostRequest)(nil),     // 5: blog.UpdatePostRequest
+	(*DeletePostRequest)(nil),     // 6: blog.DeletePostRequest
+	(*DeletePostResponse)(nil),    // 7: blog.DeletePostResponse
+	(*timestamppb.Timestamp)(nil), // 8: google.protobuf.Timestamp
 }
 var file_proto_blog_proto_depIdxs = []int32{
-	7, // 0: blog.BlogPost.publication_date:type_name -> google.protobuf.Timestamp
-	7, // 1: blog.CreatePostRequest.publication_date:type_name -> google.protobuf.Timestamp
+	8, // 0: blog.BlogPost.publication_date:type_name -> google.protobuf.Timestamp
+	8, // 1: blog.CreatePostRequest.publication_date:type_name -> google.protobuf.Timestamp
 	0, // 2: blog.PostResponse.post:type_name -> blog.BlogPost
 	1, // 3: blog.BlogService.CreatePost:input_type -> blog.CreatePostRequest
 	3, // 4: blog.BlogService.ReadPost:input_type -> blog.ReadPostRequest
-	4, // 5: blog.BlogService.UpdatePost:input_type -> blog.UpdatePostRequest
-	5, // 6: blog.BlogService.DeletePost:input_type -> blog.DeletePostRequest
-	2, // 7: blog.BlogService.CreatePost:output_type -> blog.PostResponse
-	2, // 8: blog.BlogService.ReadPost:output_type -> blog.PostResponse
-	2, // 9: blog.BlogService.UpdatePost:output_type -> blog.PostResponse
-	6, // 10: blog.BlogService.DeletePost:output_type -> blog.DeletePostResponse
-	7, // [7:11] is the sub-list for method output_type
-	3, // [3:7] is the sub-list for method input_type
+	5, // 5: blog.BlogService.UpdatePost:input_type -> blog.UpdatePostRequest
+	6, // 6: blog.BlogService.DeletePost:input_type -> blog.DeletePostRequest
+	4, // 7: blog.BlogService.ReadAll:input_type -> blog.ReadAllRequest
+	2, // 8: blog.BlogService.CreatePost:output_type -> blog.PostResponse
+	2, // 9: blog.BlogService.ReadPost:output_type -> blog.PostResponse
+	2, // 10: blog.BlogService.UpdatePost:output_type -> blog.PostResponse
+	7, // 11: blog.BlogService.DeletePost:output_type -> blog.DeletePostResponse
+	2, // 12: blog.BlogService.ReadAll:output_type -> blog.PostResponse
+	8, // [8:13] is the sub-list for method output_type
+	3, // [3:8] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
 	3, // [3:3] is the sub-list for extension extendee
 	0, // [0:3] is the sub-list for field type_name
@@ -546,7 +587,7 @@ func file_proto_blog_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_blog_proto_rawDesc), len(file_proto_blog_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

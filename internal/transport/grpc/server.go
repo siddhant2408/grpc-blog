@@ -37,7 +37,9 @@ func (s *BlogGRPCServer) CreatePost(
 	}
 
 	return &blogpb.PostResponse{
-		Post: created,
+		Post: []*blogpb.BlogPost{
+			created,
+		},
 	}, nil
 }
 
@@ -54,7 +56,26 @@ func (s *BlogGRPCServer) ReadPost(
 	}
 
 	return &blogpb.PostResponse{
-		Post: post,
+		Post: []*blogpb.BlogPost{
+			post,
+		},
+	}, nil
+}
+
+func (s *BlogGRPCServer) ReadAll(
+	ctx context.Context,
+	req *blogpb.ReadAllRequest,
+) (*blogpb.PostResponse, error) {
+
+	posts, err := s.service.ReadAll()
+	if err != nil {
+		return &blogpb.PostResponse{
+			Error: err.Error(),
+		}, nil
+	}
+
+	return &blogpb.PostResponse{
+		Post: posts,
 	}, nil
 }
 
@@ -78,7 +99,9 @@ func (s *BlogGRPCServer) UpdatePost(
 	}
 
 	return &blogpb.PostResponse{
-		Post: updated,
+		Post: []*blogpb.BlogPost{
+			updated,
+		},
 	}, nil
 }
 

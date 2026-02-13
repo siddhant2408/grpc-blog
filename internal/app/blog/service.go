@@ -103,6 +103,38 @@ func (s *Service) ReadPost(id string) (*blogpb.BlogPost, error) {
 	return post, nil
 }
 
+// Read retrieves a blog post by PostID.
+//
+// Business behavior:
+// - Validates existence
+// - Returns a copy-safe reference
+//
+// Inputs:
+// - id: unique identifier of the blog post
+//
+// Output:
+// - BlogPost if found
+// - Error if post does not exist
+//
+// Thread-safe.
+func (s *Service) ReadAll() ([]*blogpb.BlogPost, error) {
+	s.mu.RLock()
+	defer s.mu.RUnlock()
+
+	var result []*blogpb.BlogPost
+	for _, post := range s.posts {
+		result = append(result, post)
+		go func() {
+			s.logger.Info("post read",
+				zap.String("post_id", post.PostId),
+				zap.String("author", post.Author),
+			)
+		}()
+	}
+
+	return result, nil
+}
+
 // Update modifies an existing blog post.
 //
 // Business behavior:
